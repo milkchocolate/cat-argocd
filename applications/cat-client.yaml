@@ -2,7 +2,6 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: cat-client
-  namespace: argocd
 spec:
   destination:
     name: ''
@@ -12,6 +11,9 @@ spec:
     path: cat-client
     repoURL: 'https://github.com/milkchocolate/cat-home'
     targetRevision: HEAD
+    helm:
+      valueFiles:
+        - values.yaml
   project: default
   syncPolicy:
     automated:
